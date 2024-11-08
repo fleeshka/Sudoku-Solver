@@ -30,7 +30,6 @@ public class Main {
             String line;
             int row = 0;
             
-            // Читаем файл построчно
             while ((line = br.readLine()) != null && row < 9) {
                 String[] values = line.split(" ");
                 
@@ -73,7 +72,7 @@ public class Main {
 class SudokuSolver {
 
     private static final int SIZE = 9; 
-    private static final int SUBGRID_SIZE = 3; // Размер подблока 3x3
+    private static final int SUBGRID_SIZE = 3;
     private static final int POPULATION_SIZE = 100; 
     private static final int GENERATIONS = 1000; 
     private static final double MUTATION_RATE = 0.05; 
@@ -179,9 +178,9 @@ class SudokuSolver {
             int[][] parent1 = selectIndividual(population);
             int[][] parent2 = selectIndividual(population);
             int[][] offspring = crossover(parent1, parent2);
-            // if (Math.random() < MUTATION_RATE) {
-            //     mutate(offspring);
-            // }
+            if (Math.random() < MUTATION_RATE) {
+                mutate(offspring);
+            }
             newPopulation.add(offspring);
         }
         return newPopulation;
